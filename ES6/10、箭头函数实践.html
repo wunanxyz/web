@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>箭头函数实践</title>
+    <style>
+        div {
+            height: 200px;
+            width: 200px;
+            background: rebeccapurple;
+        }
+    </style>
+
+</head>
+<body>
+
+    <div id="ad"></div>
+    <script>
+            // 点击div。2秒后变色
+            // 1、获取div
+            let ad = document.getElementById('ad') // document 是 window.document 的缺省
+            console.log(`ad----${ad}`)
+            // 2、绑定按钮事件
+            ad.addEventListener('click',function () { 
+                // ------- 需求1
+                // 设置定时器 2s
+                  /*
+                    console.log(`this ==== ${this}`) // this 指 [object HTMLDivElement]
+                    setTimeout(function(){
+                        console.log(`this ++++ ${this}`) // this 指 [object Window]。当前的window
+                        // Uncaught TypeError: Cannot set property 'background' of undefined
+                        this.style.background = 'red'
+                    },2000)
+                */
+
+                console.log(`this ==== ${this}`) // this 指 [object HTMLDivElement]
+                // 方式1
+                let _this = this
+                setTimeout(function(){
+                    console.log(`this ++++ ${this}`) // this 指 [object Window]。当前的window
+                    _this.style.background = 'red'
+                },2000)
+
+                
+                // 方式2
+                // 箭头函数，申明是静态的，指向声明时作用下的this值
+                setTimeout(()=>{
+                    console.log(`this ---- ${this}`) // this 指 [object HTMLDivElement]
+                    this.style.background = 'yellow'
+                },4000)
+
+                //  ----------- 需求2: 在数组中返回偶数
+                let arr = [1,2,3,4,100,9]
+                console.log(`arr === ${arr}`)
+                let result = arr.filter(function (item){
+                    if(item%2 === 0){
+                        return true
+                    }else{
+                        return false
+                    }
+                })
+                console.log(`result === ${result}`)
+
+                // 简化： 使用箭头函数
+                let result1 =  arr.filter((item)=>{
+                    if(item%2 === 0){
+                        return true
+                    }else{
+                        return false
+                    }
+                })
+                console.log(`result1 === ${result1}`)
+
+                // 简化 2.0
+                let result2 =  arr.filter((item)=>{
+                    return item%2 === 0
+                })
+                console.log(`result2 === ${result2}`)
+                // 简化 2.1
+                let result2_1 =  arr.filter((item)=>item%2 === 0)
+                console.log(`result2_1 === ${result2_1}`)
+            });
+            /*
+            总结： 
+            箭头函数适用于
+                和 this 无关的回调
+                定时器
+                函数方法回调
+            箭头函数不适用于
+                和 this 相关的回调,例如，和Dom相关的事件回调,对象的方法
+               let temp = {
+                    name :'',
+                    getName : function(){
+                        this.name 中this，指定当前对象，也是就是大括号包含的内容对象temp
+                    }
+                }
+
+                {
+                    name :'',
+                    getName : () =>{
+                        this.name 中this，指定当前对象，也是就是大括号外层的对象
+                        // 当前指向window
+                    }
+                }
+
+            */ 
+
+        </script>
+ 
+</body>
+</html>
