@@ -9,9 +9,60 @@
 <body>
     <script>
     // es6 给函数参数(形参)给初始值
+    // 一、形参初始值
     let func = function(a,b,c){
         return a+b+c
     }
+    let result = func(1,2,3)
+    console.log(`result >>>>>${result}`)  // 6
+
+    let result1_1= func(1,2)
+    console.log(`result1_1 >>>>>${result1_1}`) // NAN
+
+    // 形参初始值，一般参数位置靠后,放在前面意义不大
+    let func2 = function(a,b,c=3){
+        return a+b+c
+    }
+    
+    let result2 = func2(1,2)
+    console.log(`result2 >>>>>${result2}`)  // 6
+    //放在前面意义不大 例子
+    let func2_2 = function(a,b=2,c){
+        return a+b+c
+    }
+    
+    let result2_2 = func2_2(1,2)
+    console.log(`result2_2 >>>>>${result2_2}`)  // NAN
+    
+    // 二、解构函数结合
+    function connect1(params){
+        let hostName = params.hostName
+        let userName = params.userName
+        let port = params.port
+        console.log(`connect1 hostName=${hostName}`)
+        console.log(`connect1 userName=${userName}`)
+        console.log(`connect1 port=${port}`)
+        // 问题： 获取hostName，userName，port是调用params，太冗余
+    };
+
+    connect1({
+        hostName: 'baidu.com',
+        userName: 'root',
+        port: '8080'
+    })
+
+    function connect2({hostName="youku.com",userName,port}){
+        console.log(`connect2 hostName=${hostName}`)
+        console.log(`connect2 userName=${userName}`)
+        console.log(`connect2 port=${port}`)
+    };
+
+    connect2({
+        hostName: 'baidu.com',
+        userName: 'root',
+        port: 8089
+    })
+
     </script>
 </body>
 </html>
