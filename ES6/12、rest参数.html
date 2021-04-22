@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>12、rest参数</title>
+</head>
+<body>
+    <script>
+        // ES6 引入rest实参，用于取代arguments(可以获取函数调用的所有实参)
+        // 对照组：ES5 获取参数
+        console.log('--- 对照组：ES5 获取参数 ---\n')
+        function func1(){
+            console.log('--- start ---')
+            console.log(`func1 >>>> ${arguments}`)
+            console.log(arguments)
+           
+            console.log(arguments[0]) // undefined
+            let info = arguments
+            console.log(info[0]) // 有值
+        }
+        func1()
+        func1("吴哈哈","你好呀~",{name:'Emily'})
+        console.log('--- rest 2_1---\n')
+       // 使用'...x'的方式,并且放到最后
+        function func2_1(...args){
+             // rest  参数是数组
+            console.log(`func2_1 >>>> ${args}`)
+            console.log(args)
+            console.log(args[0]) //  有值
+            let info = args
+            console.log(info[0]) // 有值
+          
+        }
+        func2_1("吴哈哈","你好呀~",{name:'Emily'})
+        console.log('--- rest 2_2---\n')
+        function func2_2(a,b,...args){
+             // rest  参数是数组
+             console.log(`func2_2  a >>>> ${a}`)
+             console.log(`func2_2  b >>>> ${b}`)
+            console.log(`func2_2 args >>>> ${args}`)
+            console.log(args)
+            console.log(args[0]) //  有值
+            let info = args
+            console.log(info[0]) // 有值
+          
+        }
+        func2_2(1,'33333',"吴哈哈","你好呀~",{name:'Emily'})
+
+
+        console.log('--- rest 2_2---  \n')
+        // 对照：错误组 
+        // function func2_3(a,...args,b){
+        //     // rest  参数是数组
+        //     console.log(`func2_2  a >>>> ${a}`)
+        //     console.log(`func2_2  b >>>> ${b}`)
+        //     console.log(`func2_2 args >>>> ${args}`)
+        //     console.log(args)
+        //     console.log(args[0]) //  有值
+        //     let info = args
+        //     console.log(info[0]) // 有值
+        // }
+        // func2_3(1,'33333',"吴哈哈","你好呀~",{name:'Emily'})
+    </script>
+</body>
+</html>
