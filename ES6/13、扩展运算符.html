@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>13、拓展运算符</title>
+</head>
+<body>
+    <script>
+       // [...] 拓展运算符能将数组 [] 转换为逗号分割的[参数序列]
+        const names = ['吴哈哈','桃子酱','等过年']
+        function  print(){
+            console.log(arguments);
+        }
+        // 对照组
+        print(names) // ["吴哈哈", "桃子酱", "等过年"]
+        // 实验组
+        print(...names) 
+        /*
+        0: "吴哈哈"
+        1: "桃子酱"
+        2: "等过年"
+        */
+    </script>
+</body>
+</html>

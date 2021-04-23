@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>8、对象的简化.html</title>
+</head>
+<body>
+    <script>
+    let name = '吴哈哈'
+    let change = function(){
+        console.log('change')
+    }
+    // 对照组： es6之前的使用方式
+    let all = {
+        name: name,
+        change: change,
+        impove: function(){
+            console.log('all')
+            console.log(impove)
+        }
+    }
+    console.log(all)
+    // es6 之后的使用方式
+    let all1 = {
+        name,
+        change,
+        impove(){
+            console.log('all1')
+            console.log(impove)
+        }
+    }
+    console.log(all1)
+    </script>
+    
+</body>
+</html>

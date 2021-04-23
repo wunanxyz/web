@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>14、扩展运算符的应用</title>
+</head>
+<body>
+    <div></div>
+    <div></div>
+    <div></div>
+    <script>
+    // 1、合并数组
+    const flowers =['菊花','玫瑰','夏冬青']
+    const trees =['梅树','杉树','楠木']
+    const alls = [...flowers,...trees]
+    console.log(alls)
+    // 2、数组的克隆
+    // 如果是引用对象就是浅 拷贝
+    const flowers2 = [...flowers]
+    console.log(flowers2)
+    // 3、将伪组转化数组
+    const divs =  window.document.querySelectorAll('div')
+    // 对照组
+    console.log(divs) // 
+    // 实验组
+    const divArr = [...divs]
+    console.log(divArr)
+    // 另： 可以将参数：arguments 转  数组的方式，因为有了rest，可以不用，但是可以学习学习 
+    </script>
+</body>
+</html>
