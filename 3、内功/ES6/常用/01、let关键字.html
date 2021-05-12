@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>01、let关键字</title>
+  <link crossorigin="anonymous" href="https://cdn.bootcss.com/twitter-bootstrap/3.3.7/css/bootstrap.min.css"
+  rel="stylesheet">
+<style>
+  .item {
+      width: 100px;
+      height: 50px;
+      border: solid 1px rgb(42, 156, 156);
+      float: left;
+      margin-right: 10px;
+  }
+</style>
+</head>
+<body>
+ <!--  案例一  -->
+ <h2 >案例一</h2>
+ 
+<button>测试1</button>
+<br>
+<button>测试2</button>
+<br>
+<button>测试3</button>
+<br>
+
+<!--  案例二  -->
+<h2 >案例二</h2>
+<div class="container">
+  <h4 class="page-header">点击切换颜色</h2>
+  <div class="item"></div>
+  <div class="item"></div>
+  <div class="item"></div>
+</div>
+<!--
+***let
+1. 作用:
+  * 与var类似, 用于声明一个变量
+2. 特点:
+  * 在块作用域内有效
+  * 不能重复声明
+  * 不会预处理, 不存在提升
+3. 应用:
+  * 循环遍历加监听
+  * 使用let取代var是趋势
+-->
+<script type="text/javascript">
+
+    //console.log(age);// age is not defined
+    //1. 变量不能重复声明
+    let age = 12;
+    //let age = 13;不能重复声明
+    console.log(age);
+
+    //2. 块儿级作用域  全局, 函数, eval
+    // if else while for 
+    // {
+    //     let girl = '周扬青';
+    // }
+    // console.log(girl);
+
+
+    //3. 不存在变量提升
+    // console.log(song);
+    // let song = '恋爱达人';
+
+
+    //5. 不影响作用域链
+    {
+        let school = '尚硅谷';
+        function fn(){
+            console.log(school);
+        }
+        fn();
+    }
+    // 案例一
+    let btns = document.getElementsByTagName('button');
+    for(let i = 0;i<btns.length;i++){
+            btns[i].onclick = function () {
+                alert(i);
+            }
+    }
+    // 案例二
+    //获取div元素对象
+    let items = document.getElementsByClassName('item');
+
+    //遍历并绑定事件
+    for(let i = 0;i<items.length;i++){
+        items[i].onclick = function(){
+            //修改当前元素的背景颜色
+            // this.style.background = 'pink';
+
+            items[i].style.background = 'pink';
+
+        }
+    }
+
+</script>
+</body>
+
+</html>
