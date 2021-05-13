@@ -14,6 +14,25 @@
   * bind()是将函数返回
 -->
 <script type="text/javascript">
+  'use strict';
+  console.log('------- call apply  对照组-------')
+   var obj = {username:'吴哈哈'}
+   function foo(){
+     console.log(this)
+   }
+   foo.call(obj)
+   foo.apply(obj)
+
+   console.log('------- call apply  实验组-------')
+ 
+   function foo2(data){
+     console.log(this,data)
+   }
+   foo.call(obj,222)
+   foo.apply(obj,[222])
+   
+
+   console.log('------- 我是分割线-------')
     function fun(age) {
         this.name = 'kobe';
         this.age = age;
